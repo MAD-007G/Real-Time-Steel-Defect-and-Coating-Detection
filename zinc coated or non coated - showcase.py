@@ -124,24 +124,9 @@ def main():
 
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
+---
 
-            except Exception as e:
-                print(f"Processing error: {e}")
-            finally:
-                datastream.QueueBuffer(buffer)
+## 📌 Author Notice
 
-    except KeyboardInterrupt:
-        print("Stopped by user.")
-    finally:
-        try:
-            if datastream:
-                datastream.StopAcquisition()
-            if device:
-                device.RemoteDevice().NodeMaps()[0].FindNode("AcquisitionStop").Execute()
-            cv2.destroyAllWindows()
-            ids_peak.Library.Close()
-        except Exception as e:
-            print(f"Cleanup error: {e}")
+This project was developed entirely based on my own knowledge and experience in industrial vision systems. 
 
-if __name__ == "__main__":
-    main()
